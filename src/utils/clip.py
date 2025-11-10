@@ -25,10 +25,12 @@ def clip(value, min_val, max_val):
     ----------
     value : int or float or array_like
         The value(s) to clip. Can be a scalar or array-like.
-    min_val : int or float
+    min_val : int or float or None
         Minimum allowed value. Values below this will be set to min_val.
-    max_val : int or float
+        If None, no minimum limit is applied.
+    max_val : int or float or None
         Maximum allowed value. Values above this will be set to max_val.
+        If None, no maximum limit is applied.
 
     Returns
     -------
@@ -44,6 +46,10 @@ def clip(value, min_val, max_val):
     0
     >>> clip(5, 0, 10)
     5
+    >>> clip(15, 0, None)
+    15
+    >>> clip(-5, None, 10)
+    -5
     >>> clip([1, 5, 15, -5], 0, 10)
     [1, 5, 10, 0]
 
@@ -54,4 +60,12 @@ def clip(value, min_val, max_val):
     """
     if HAS_NUMPY:
         return np.clip(value, min_val, max_val)
+
+    # Fallback without numpy
+    if max_val is None:
+        if min_val is None:
+            return value
+        return max(min_val, value)
+    elif min_val is None:
+        return min(value, max_val)
     return max(min_val, min(max_val, value))
