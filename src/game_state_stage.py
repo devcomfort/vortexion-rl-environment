@@ -60,7 +60,7 @@ class GameStateStage:
 
         self.background = StageBackground(
             self,
-            f"stage_{game.game_vars.stage_num}.tmx",
+            f"stage_{game.game_vars.current_stage}.tmx",
             self.game.game_vars.is_vortex_stage(),
         )
 
@@ -68,7 +68,7 @@ class GameStateStage:
 
         self.check_stage_clear = False
 
-        self.music = load_music(STAGE_MUSIC_FILES[self.game.game_vars.stage_num])
+        self.music = load_music(STAGE_MUSIC_FILES[self.game.game_vars.current_stage])
         play_music(self.music, num_channels=3)
 
     def on_exit(self):
@@ -83,7 +83,7 @@ class GameStateStage:
         for e in self.enemies:
             e.destroy()
         self.switch_state(State.STAGE_CLEAR)
-        if self.game.game_vars.stage_num < FINAL_STAGE:
+        if self.game.game_vars.current_stage < FINAL_STAGE:
             self.music = load_music(MUSIC_STAGE_CLEAR)
             play_music(self.music, False, 3, 620)
         else:
@@ -236,7 +236,7 @@ class GameStateStage:
         elif self.state == State.GAME_OVER:
             self.font.draw_text(96, 88, "GAME OVER")
         elif self.state == State.STAGE_CLEAR:
-            if self.game.game_vars.stage_num != FINAL_STAGE:
+            if self.game.game_vars.current_stage != FINAL_STAGE:
                 if self.state_time > 60:
                     if self.game.game_vars.is_vortex_stage():
                         self.font.draw_text(80, 88, "LEAVING VORTEX")

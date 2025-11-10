@@ -84,8 +84,8 @@ class Player(Sprite):
             self.game_state,
             self.x,
             self.y,
-            self.game_vars.current_weapon,
-            self.game_vars.weapon_levels[self.game_vars.current_weapon],
+            self.game_vars.selected_weapon,
+            self.game_vars.weapon_levels[self.game_vars.selected_weapon],
         ):
             self.shot_delay = SHOT_DELAY
 

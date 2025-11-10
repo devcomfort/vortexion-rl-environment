@@ -30,11 +30,11 @@ class Hud:
         self.font.draw_text(16, 8, f"{self.game_vars.score:06}")
 
         self.font.draw_text(96, 0, "HI-SCORE")
-        self.font.draw_text(104, 8, f"{self.game_vars.hi_score:06}")
+        self.font.draw_text(104, 8, f"{self.game_vars.high_score:06}")
 
         self.font.draw_text(176, 0, "ARM")
-        self.font.draw_text(176, 8, WEAPON_NAMES[self.game_vars.current_weapon])
-        px.blt(184, 8, 0, self.game_vars.current_weapon * 16, 224, 16, 8)
+        self.font.draw_text(176, 8, WEAPON_NAMES[self.game_vars.selected_weapon])
+        px.blt(184, 8, 0, self.game_vars.selected_weapon * 16, 224, 16, 8)
 
         px.blt(216, 0, 0, 0, 4, 16, 8, 0)
         self.font.draw_text(224, 8, f"{self.game_vars.lives}")
