@@ -1,8 +1,10 @@
 from entities.enemy import Enemy
+from entity_config import get
 
-BULLET_SPEED = 1.5
-SPEED = 1.5
-VEL_Y = [-0.5, 1, -1.25, 1.25, -1, 0.5]
+BULLET_SPEED = get("enemy_i", "bullet_speed", 1.5)
+SPEED = get("enemy_i", "speed", 1.5)
+VEL_Y = get("enemy_i", "vel_y", [-0.5, 1, -1.25, 1.25, -1, 0.5])
+VEL_Y_CHANGE_INTERVAL = get("enemy_i", "vel_y_change_interval", 45)
 
 
 class EnemyI(Enemy):
@@ -20,7 +22,7 @@ class EnemyI(Enemy):
         super().update()  # hit frames
 
         if self.vel_y_index < len(VEL_Y) - 1:
-            if self.lifetime % 45 == 0:
+            if self.lifetime % VEL_Y_CHANGE_INTERVAL == 0:
                 self.vel_y_index += 1
 
         self.y += VEL_Y[self.vel_y_index]

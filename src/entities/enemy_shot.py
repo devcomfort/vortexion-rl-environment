@@ -1,12 +1,14 @@
 import pyxel as px
 
 import config
+from entity_config import get
 from systems.sprite import Sprite
 
 APP_WIDTH = config.APP_WIDTH
 EntityType = config.EntityType
 
-SIZE = 4
+SIZE = get("enemy_shot", "size", 4)
+COLOUR_CHANGE_INTERVAL = get("enemy_shot", "colour_change_interval", 10)
 
 
 class EnemyShot(Sprite):
@@ -59,7 +61,7 @@ class EnemyShot(Sprite):
             self.remove = True
             return
 
-        if px.frame_count % 10 == 0:
+        if px.frame_count % COLOUR_CHANGE_INTERVAL == 0:
             self.colour = 11 if (self.colour == 6) else 6
 
     def draw(self):

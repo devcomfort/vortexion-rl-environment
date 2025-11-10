@@ -4,6 +4,7 @@ import math
 import pyxel as px
 
 import config
+from entity_config import get
 from systems.audio import SoundType, play_sound
 from systems.sprite import Sprite
 
@@ -11,7 +12,7 @@ MAX_COLOURS = config.MAX_COLOURS
 EntityType = config.EntityType
 MAX_WEAPONS = config.MAX_WEAPONS
 
-SPEED = 1
+SPEED = get("powerup", "speed", 0.5)
 
 
 class PowerupType(IntEnum):
@@ -97,7 +98,7 @@ class Powerup(Sprite):
             self.collected()
 
     def update(self):
-        self.x -= 0.5
+        self.x -= SPEED
         if self.x + self.w < 0:
             self.remove = True
             return

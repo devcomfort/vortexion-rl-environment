@@ -1,20 +1,20 @@
 import config
+from entity_config import get
 from systems.sprite import Sprite
 
 APP_WIDTH = config.APP_WIDTH
 EntityType = config.EntityType
 
-MAX_SHOTS = 4
+MAX_SHOTS = get("player_shot", "max_shots", 4)
 UV_FRAME_OFFSET = 1
-SIZE = 14
+SIZE = get("player_shot", "size", 14)
 UV_OFFSET_Y = 16
 
-SPEED_LVL = (10, 10, 11, 11, 12, 12)
-DAMAGE = {
-    0: [1, 1, 1, 1, 1, 2],  # fwd
-    1: [1, 1, 1, 2, 2, 3],  # spread/diagonal
-    2: [1, 1, 2, 2, 3, 3],  # back/fwd
-}
+SPEED_LVL = tuple(get("player_shot", "speed_lvl", [10, 10, 11, 11, 12, 12]))
+DAMAGE_RAW = get("player_shot", "damage", {"0": [1, 1, 1, 1, 1, 2], "1": [1, 1, 1, 2, 2, 3], "2": [1, 1, 2, 2, 3, 3]})
+DAMAGE = {int(k): v for k, v in DAMAGE_RAW.items()}
+SPREAD_DIAGONAL_X = get("player_shot", "spread_diagonal_x", 0.894)
+SPREAD_DIAGONAL_Y = get("player_shot", "spread_diagonal_y", 0.447)
 
 
 class PlayerShot(Sprite):
@@ -79,8 +79,8 @@ def create(gs, player_x, player_y, wpn_type, wlvl):
             )
         )
     elif wpn_type == 1:  # spread/diagonal
-        spdx = SPEED_LVL[wlvl] * 0.894
-        spdy = SPEED_LVL[wlvl] * 0.447
+        spdx = SPEED_LVL[wlvl] * SPREAD_DIAGONAL_X
+        spdy = SPEED_LVL[wlvl] * SPREAD_DIAGONAL_Y
         addshot(
             PlayerShot(gs, player_x + 12, player_y - 10, wpn_type, wlvl, spdx, -spdy)
         )

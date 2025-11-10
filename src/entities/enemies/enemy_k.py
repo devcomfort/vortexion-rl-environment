@@ -2,11 +2,14 @@ import pyxel as px
 
 import config
 from entities.enemy import Enemy
+from entity_config import get
 
 ENEMY_SCORE_BOSS = config.ENEMY_SCORE_BOSS
 
-BULLET_SPEED = 2.5
-MOVE_SPEED_Y = 0.5
+BULLET_SPEED = get("enemy_k", "bullet_speed", 2.5)
+MOVE_SPEED_Y = get("enemy_k", "move_speed_y", 0.5)
+SHOOT_INTERVAL_ALONE = get("enemy_k", "shoot_interval_alone", 60)
+SHOOT_INTERVAL_WITH_ENEMIES = get("enemy_k", "shoot_interval_with_enemies", 200)
 
 
 class EnemyK(Enemy):
@@ -48,10 +51,10 @@ class EnemyK(Enemy):
                 self.speed_y *= -1
 
         if self.game_state.get_num_enemies() == 0:
-            if self.lifetime % 60 == 0:
+            if self.lifetime % SHOOT_INTERVAL_ALONE == 0:
                 self.shoot()
         else:
-            if self.lifetime % 200 == 0:
+            if self.lifetime % SHOOT_INTERVAL_WITH_ENEMIES == 0:
                 self.shoot()
 
     def explode(self):

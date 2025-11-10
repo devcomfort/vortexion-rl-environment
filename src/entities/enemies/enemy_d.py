@@ -1,6 +1,8 @@
 from entities.enemy import Enemy
+from entity_config import get
 
-SPEED_Y = 2
+SPEED_Y = get("enemy_d", "speed_y", 2)
+SPEED_X_OFFSET = get("enemy_d", "speed_x_offset", 0.25)
 
 
 class EnemyD(Enemy):
@@ -12,7 +14,7 @@ class EnemyD(Enemy):
 
         self.flip_y = True if self.y < 96 else False
 
-        self.vx = state.get_scroll_x_speed() + 0.25
+        self.vx = state.get_scroll_x_speed() + SPEED_X_OFFSET
         self.vy = 0
 
     def update(self):

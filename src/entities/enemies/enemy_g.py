@@ -1,6 +1,8 @@
 from entities.enemy import Enemy
+from entity_config import get
 
-SPEED_Y = 1.5
+SPEED_Y = get("enemy_g", "speed_y", 1.5)
+SPEED_X_OFFSET = get("enemy_g", "speed_x_offset", 0.5)
 
 
 class EnemyG(Enemy):
@@ -16,10 +18,10 @@ class EnemyG(Enemy):
         super().update()  # hit frames
 
         if self.lifetime < 250:
-            self.speed = -(self.game_state.get_scroll_x_speed() + 0.5)
+            self.speed = -(self.game_state.get_scroll_x_speed() + SPEED_X_OFFSET)
         else:
             self.flip_x = True
-            self.speed = self.game_state.get_scroll_x_speed() + 0.5
+            self.speed = self.game_state.get_scroll_x_speed() + SPEED_X_OFFSET
 
         if self.lifetime >= 250 and self.lifetime < 280:
             if self.y < 96:

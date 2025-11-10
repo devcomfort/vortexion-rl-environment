@@ -1,6 +1,7 @@
 from entities.enemy import Enemy
+from entity_config import get
 
-BULLET_SPEED = 2
+BULLET_SPEED = get("enemy_c", "bullet_speed", 2)
 
 
 class EnemyC(Enemy):

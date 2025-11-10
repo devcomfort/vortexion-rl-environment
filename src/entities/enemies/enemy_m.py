@@ -2,9 +2,12 @@ import pyxel as px
 
 import config
 from entities.enemy import Enemy
+from entity_config import get
 
 ENEMY_SCORE_BOSS = config.ENEMY_SCORE_BOSS
-BULLET_SPEED = 1.5
+BULLET_SPEED = get("enemy_m", "bullet_speed", 1.5)
+SHOOT_INTERVAL_ALONE = get("enemy_m", "shoot_interval_alone", 60)
+SHOOT_INTERVAL_WITH_ENEMIES = get("enemy_m", "shoot_interval_with_enemies", 200)
 
 
 # Boss: Eye
@@ -36,10 +39,10 @@ class EnemyM(Enemy):
         self.x -= self.speed_x
 
         if self.game_state.get_num_enemies() == 0:
-            if self.lifetime % 60 == 0:
+            if self.lifetime % SHOOT_INTERVAL_ALONE == 0:
                 self.shoot()
         else:
-            if self.lifetime % 200 == 0:
+            if self.lifetime % SHOOT_INTERVAL_WITH_ENEMIES == 0:
                 self.shoot()
 
     def explode(self):

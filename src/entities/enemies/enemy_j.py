@@ -1,6 +1,8 @@
 from entities.enemy import Enemy
+from entity_config import get
 
-BULLET_SPEED = 1.5
+BULLET_SPEED = get("enemy_j", "bullet_speed", 1.5)
+SHOT_INTERVAL = get("enemy_j", "shot_interval", 120)
 
 
 class EnemyJ(Enemy):
@@ -24,7 +26,7 @@ class EnemyJ(Enemy):
             self.remove = True
             return
 
-        if self.lifetime % 120 == 0:
+        if self.lifetime % SHOT_INTERVAL == 0:
             self.shoot_at_angle(BULLET_SPEED, 210)
             self.shoot_at_angle(BULLET_SPEED, 195, 10)
             self.shoot_at_angle(BULLET_SPEED, 180, 20)

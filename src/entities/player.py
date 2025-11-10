@@ -2,6 +2,7 @@ import pyxel as px
 
 import config
 from entities import player_shot
+from entity_config import get
 from systems import input
 from systems.sprite import Sprite
 
@@ -9,10 +10,10 @@ APP_WIDTH = config.APP_WIDTH
 APP_HEIGHT = config.APP_HEIGHT
 EntityType = config.EntityType
 
-MOVE_SPEED = 2
-MOVE_SPEED_DIAGONAL = MOVE_SPEED * 0.707
-SHOT_DELAY = 10  # frames
-INVINCIBILITY_FRAMES = 120
+MOVE_SPEED = get("player", "move_speed", 2)
+MOVE_SPEED_DIAGONAL = get("player", "move_speed_diagonal", 1.414)
+SHOT_DELAY = get("player", "shot_delay", 10)
+INVINCIBILITY_FRAMES = get("player", "invincibility_frames", 120)
 
 
 class Player(Sprite):

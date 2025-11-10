@@ -1,9 +1,10 @@
 from entities.enemy import Enemy
+from entity_config import get
 
-SPEED = 2.5
-BULLET_SPEED = 4
-
-SHOT_DELAY = 120
+SPEED = get("enemy_p", "speed", 2.5)
+BULLET_SPEED = get("enemy_p", "bullet_speed", 4)
+SHOT_DELAY = get("enemy_p", "shot_delay", 120)
+INITIAL_SHOT_DELAY = get("enemy_p", "initial_shot_delay", 25)
 
 
 class EnemyP(Enemy):
@@ -13,7 +14,7 @@ class EnemyP(Enemy):
         self.u = 240
         self.v = 80
 
-        self.shot_delay = 25  # allow time to get on screen
+        self.shot_delay = INITIAL_SHOT_DELAY  # allow time to get on screen
 
     def update(self):
         super().update()  # hit frames

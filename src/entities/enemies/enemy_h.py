@@ -1,8 +1,9 @@
 from entities.enemy import Enemy
+from entity_config import get
 
-SPEED_X = 1.5
-BOUNCE_VEL = 5
-GRAVITY = 0.2
+SPEED_X = get("enemy_h", "speed_x", 1.5)
+BOUNCE_VEL = get("enemy_h", "bounce_vel", 5)
+GRAVITY = get("enemy_h", "gravity", 0.2)
 
 
 class EnemyH(Enemy):

@@ -2,10 +2,10 @@ import math
 import pyxel as px
 
 from entities.enemy import Enemy
+from entity_config import get
 
-SPEED = 1.5
-
-BULLET_SPEED = 2
+SPEED = get("enemy_b", "speed", 1.5)
+BULLET_SPEED = get("enemy_b", "bullet_speed", 2)
 
 
 class EnemyB(Enemy):
