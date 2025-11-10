@@ -10,6 +10,8 @@
 #   universal: false
 
 -e file:.
+annotated-types==0.7.0
+    # via pydantic
 antlr4-python3-runtime==4.9.3
     # via hydra-core
     # via omegaconf
@@ -24,6 +26,10 @@ packaging==25.0
     # via hydra-core
 pandas==2.3.3
     # via vortexion
+pydantic==2.12.4
+    # via vortexion
+pydantic-core==2.41.5
+    # via pydantic
 python-dateutil==2.9.0.post0
     # via pandas
 pytz==2025.2
@@ -34,5 +40,11 @@ pyyaml==6.0.3
     # via omegaconf
 six==1.17.0
     # via python-dateutil
+typing-extensions==4.15.0
+    # via pydantic
+    # via pydantic-core
+    # via typing-inspection
+typing-inspection==0.4.2
+    # via pydantic
 tzdata==2025.2
     # via pandas

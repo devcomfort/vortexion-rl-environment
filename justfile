@@ -25,7 +25,7 @@ build:
     @echo "Building web version..."
     python3 -m pyxel package src src/main.py
     python3 -m pyxel app2html src.pyxapp
-    python3 -c "import re; content = open('src.html', 'r').read(); content = re.sub(r'launchPyxel\(\{ command: \"play\", name: \"([^\"]+)\", gamepad: \"enabled\", base64: \"([^\"]+)\" \}\)', r'launchPyxel({ command: \"play\", name: \"\1\", gamepad: \"enabled\", packages: \"numpy\", base64: \"\2\" })', content); open('index.html', 'w').write(content)"
+    python3 -c "import re; content = open('src.html', 'r').read(); content = re.sub(r'launchPyxel\(\{ command: \"play\", name: \"([^\"]+)\", gamepad: \"enabled\", base64: \"([^\"]+)\" \}\)', r'launchPyxel({ command: \"play\", name: \"\1\", gamepad: \"enabled\", packages: \"numpy,pydantic\", base64: \"\2\" })', content); open('index.html', 'w').write(content)"
     rm -f src.html src.pyxapp
     @echo "Created index.html - optimized single-file web version with numpy"
 
