@@ -3,6 +3,7 @@ import pyxel as px
 import config
 from entities import powerup
 from entities.enemy_shot import EnemyShot
+from entity_config import get_all
 from systems.audio import SoundType, play_sound
 from systems.sprite import Sprite
 
@@ -16,15 +17,36 @@ INVINCIBLE_START_FRAMES = 15
 
 
 class Enemy(Sprite):
-    def __init__(self, game_state, x, y) -> None:
+    def __init__(self, game_state, x, y, entity_type=None) -> None:
         super().__init__(game_state)
         self.type = EntityType.ENEMY
         self.x = x
         self.y = y
-        self.hp = 2
         self.hit_frames = 0
-        self.score = ENEMY_SCORE_NORMAL
         self.lifetime = 0
+
+        # entity_config에서 설정 로드
+        if entity_type:
+            self.config = get_all(entity_type)
+            # 기본 속성들을 설정에서 로드
+            self.colour = self.config.get("colour", 15)  # white
+            self.u = self.config.get("u", 0)
+            self.v = self.config.get("v", 0)
+            self.hp = self.config.get("hp", 2)
+            # w, h는 보스만 32x32, 나머지는 기본 16x16
+            if "w" in self.config:
+                self.w = self.config["w"]
+            if "h" in self.config:
+                self.h = self.config["h"]
+        else:
+            # entity_type이 없으면 기본값 사용
+            self.config = {}
+            self.colour = 15
+            self.u = 0
+            self.v = 0
+            self.hp = 2
+
+        self.score = ENEMY_SCORE_NORMAL
 
     def explode(self):
         self.game_state.add_explosion(self.x, self.y, 0)
