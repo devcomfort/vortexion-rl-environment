@@ -1,0 +1,48 @@
+# @package game
+# Game mechanics configuration
+# Used in: game_vars.py, hud.py, powerup.py, enemy.py (gameplay mechanics)
+
+# Initial number of lives when starting a new game
+# Used in: game_vars.py (initial lives count)
+starting_lives: 3
+
+# Maximum number of lives allowed
+# Used in: game_vars.py (maximum lives cap)
+max_lives: 9
+
+# Maximum number of weapons
+# Used in: game_vars.py (weapon array size), hud.py (weapon display loop), 
+# powerup.py (weapon type cycling)
+max_weapons: 3
+
+# Maximum level for any weapon
+# Used in: game_vars.py (weapon level cap), hud.py (weapon level display)
+max_weapon_level: 5
+
+# Weapon names for display
+# Used in: hud.py (weapon name display)
+weapon_names:
+  - "A"
+  - "B"
+  - "C"
+
+# Maximum score cap
+# Used in: game_vars.py (score cap)
+max_score: 999999
+
+# Score awarded for defeating a normal enemy
+# Used in: enemy.py (normal enemy score value)
+enemy_score_normal: 100
+
+# Score awarded for defeating a boss enemy
+# Used in: enemy_k.py, enemy_l.py, enemy_m.py (boss enemy score value)
+enemy_score_boss: 5000
+
+# Damage dealt by player shots
+# Used in: enemy.py (damage calculation)
+player_shot_damage: 1
+
+# Damage dealt by bombs
+# Used in: enemy.py (bomb damage calculation)
+bomb_damage: 30
+

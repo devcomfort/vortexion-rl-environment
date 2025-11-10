@@ -1,0 +1,41 @@
+# @package app
+# Application configuration
+# Used in: main.py (window initialization, title, FPS, scaling)
+
+# Application version string
+# Used in: game_state_titles.py (displayed on title screen)
+version: "1.0"
+
+# Window width in pixels
+# Used in: main.py (window width), player.py (boundary check), 
+# enemy_shot.py, player_shot.py (boundary check)
+width: 256
+
+# Window height in pixels
+# Used in: main.py (window height), player.py (boundary check)
+height: 192
+
+# Application name displayed in window title
+# Used in: main.py (window title)
+name: "VORTEXION"
+
+# Frames per second
+# Used in: main.py (frames per second)
+fps: 60
+
+# Display scaling factor
+# Used in: main.py (display scaling factor)
+display_scale: 2
+
+# Capture scaling factor
+# Used in: main.py (capture scaling factor)
+capture_scale: 2
+
+# Graphics resource file path
+# Used in: main.py (graphics resource file)
+gfx_file: "gfx.png"
+
+# Sounds resource file path
+# Used in: main.py (sounds resource file)
+sounds_res_file: "sounds.pyxres"
+
