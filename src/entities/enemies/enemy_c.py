@@ -1,18 +1,10 @@
 from entities.enemy import Enemy
-from entity_config import get
-
-BULLET_SPEED = get("enemy_c", "bullet_speed", 2)
 
 
 class EnemyC(Enemy):
     def __init__(self, state, x, y) -> None:
-        super().__init__(state, x, y)
-        self.colour = 13  # purple
-        self.u = 32
-        self.v = 80
-
+        super().__init__(state, x, y, "enemy_c")
         self.flip_y = True if self.y < 96 else False
-
         self.speed = state.get_scroll_x_speed()
 
     def update(self):
@@ -26,4 +18,5 @@ class EnemyC(Enemy):
             return
 
         if self.lifetime == 25 or self.lifetime == 50:
-            self.shoot_at_player(BULLET_SPEED)
+            bullet_speed = self.config.get("bullet_speed", 2)
+            self.shoot_at_player(bullet_speed)

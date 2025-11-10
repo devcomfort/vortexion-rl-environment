@@ -2,32 +2,21 @@ import pyxel as px
 
 import config
 from entities.enemy import Enemy
-from entity_config import get
 
 ENEMY_SCORE_BOSS = config.ENEMY_SCORE_BOSS
-BULLET_SPEED = get("enemy_l", "bullet_speed", 1.5)
-SHOOT_INTERVAL_ALONE = get("enemy_l", "shoot_interval_alone", 60)
-SHOOT_INTERVAL_WITH_ENEMIES = get("enemy_l", "shoot_interval_with_enemies", 200)
 
 
 # Boss: large leaves
 class EnemyL(Enemy):
     def __init__(self, state, x, y) -> None:
-        super().__init__(state, x, y)
-        self.colour = 3  # light green
-        self.u = 176
-        self.v = 80
-
-        self.w = 32
-        self.h = 32
-        self.hp = 100
+        super().__init__(state, x, y, "enemy_l")
         self.score = ENEMY_SCORE_BOSS
-
         self.speed_x = state.get_scroll_x_speed()
 
     def shoot(self):
-        self.shoot_at_player(BULLET_SPEED)
-        self.shoot_at_player(BULLET_SPEED, 5)
+        bullet_speed = self.config.get("bullet_speed", 1.5)
+        self.shoot_at_player(bullet_speed)
+        self.shoot_at_player(bullet_speed, 5)
 
     def update(self):
         super().update()  # hit frames
@@ -36,11 +25,13 @@ class EnemyL(Enemy):
 
         self.x -= self.speed_x
 
+        shoot_interval_alone = self.config.get("shoot_interval_alone", 60)
+        shoot_interval_with_enemies = self.config.get("shoot_interval_with_enemies", 200)
         if self.game_state.get_num_enemies() == 0:
-            if self.lifetime % SHOOT_INTERVAL_ALONE == 0:
+            if self.lifetime % shoot_interval_alone == 0:
                 self.shoot()
         else:
-            if self.lifetime % SHOOT_INTERVAL_WITH_ENEMIES == 0:
+            if self.lifetime % shoot_interval_with_enemies == 0:
                 self.shoot()
 
     def explode(self):

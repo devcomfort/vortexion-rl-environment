@@ -1,19 +1,9 @@
 from entities.enemy import Enemy
-from entity_config import get
-
-BULLET_SPEED = get("enemy_j", "bullet_speed", 1.5)
-SHOT_INTERVAL = get("enemy_j", "shot_interval", 120)
 
 
 class EnemyJ(Enemy):
     def __init__(self, state, x, y) -> None:
-        super().__init__(state, x, y)
-        self.colour = 13  # purple
-        self.u = 144
-        self.v = 80
-
-        self.hp = 40
-
+        super().__init__(state, x, y, "enemy_j")
         self.speed_x = state.get_scroll_x_speed()
 
     def update(self):
@@ -26,9 +16,11 @@ class EnemyJ(Enemy):
             self.remove = True
             return
 
-        if self.lifetime % SHOT_INTERVAL == 0:
-            self.shoot_at_angle(BULLET_SPEED, 210)
-            self.shoot_at_angle(BULLET_SPEED, 195, 10)
-            self.shoot_at_angle(BULLET_SPEED, 180, 20)
-            self.shoot_at_angle(BULLET_SPEED, 165, 30)
-            self.shoot_at_angle(BULLET_SPEED, 150, 40)
+        shot_interval = self.config.get("shot_interval", 120)
+        if self.lifetime % shot_interval == 0:
+            bullet_speed = self.config.get("bullet_speed", 1.5)
+            self.shoot_at_angle(bullet_speed, 210)
+            self.shoot_at_angle(bullet_speed, 195, 10)
+            self.shoot_at_angle(bullet_speed, 180, 20)
+            self.shoot_at_angle(bullet_speed, 165, 30)
+            self.shoot_at_angle(bullet_speed, 150, 40)

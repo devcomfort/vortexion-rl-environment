@@ -2,35 +2,23 @@ import pyxel as px
 
 import config
 from entities.enemy import Enemy
-from entity_config import get
 
 ENEMY_SCORE_BOSS = config.ENEMY_SCORE_BOSS
-
-BULLET_SPEED = get("enemy_k", "bullet_speed", 2.5)
-MOVE_SPEED_Y = get("enemy_k", "move_speed_y", 0.5)
-SHOOT_INTERVAL_ALONE = get("enemy_k", "shoot_interval_alone", 60)
-SHOOT_INTERVAL_WITH_ENEMIES = get("enemy_k", "shoot_interval_with_enemies", 200)
 
 
 class EnemyK(Enemy):
     def __init__(self, state, x, y) -> None:
-        super().__init__(state, x, y)
-        self.colour = 11  # yellow
-        self.u = 160
-        self.v = 80
-
-        self.w = 32
-        self.h = 32
-        self.hp = 200
+        super().__init__(state, x, y, "enemy_k")
         self.score = ENEMY_SCORE_BOSS
-
         self.speed_x = state.get_scroll_x_speed()
-        self.speed_y = MOVE_SPEED_Y
+        move_speed_y = self.config.get("move_speed_y", 0.5)
+        self.speed_y = move_speed_y
 
     def shoot(self):
-        self.shoot_at_player(BULLET_SPEED)
-        self.shoot_at_player(BULLET_SPEED, 5)
-        self.shoot_at_player(BULLET_SPEED, 10)
+        bullet_speed = self.config.get("bullet_speed", 2.5)
+        self.shoot_at_player(bullet_speed)
+        self.shoot_at_player(bullet_speed, 5)
+        self.shoot_at_player(bullet_speed, 10)
 
     def update(self):
         super().update()  # hit frames
@@ -50,11 +38,13 @@ class EnemyK(Enemy):
             if self.y <= 40:
                 self.speed_y *= -1
 
+        shoot_interval_alone = self.config.get("shoot_interval_alone", 60)
+        shoot_interval_with_enemies = self.config.get("shoot_interval_with_enemies", 200)
         if self.game_state.get_num_enemies() == 0:
-            if self.lifetime % SHOOT_INTERVAL_ALONE == 0:
+            if self.lifetime % shoot_interval_alone == 0:
                 self.shoot()
         else:
-            if self.lifetime % SHOOT_INTERVAL_WITH_ENEMIES == 0:
+            if self.lifetime % shoot_interval_with_enemies == 0:
                 self.shoot()
 
     def explode(self):
