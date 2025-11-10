@@ -1,4 +1,3 @@
-
 import pyxel as px
 
 import input
@@ -12,6 +11,7 @@ BG_SCROLL_SPD = 8
 TITLE_SCREEN_MAP_FILE = "complete.tmx"
 BG_TM_INDEX = 0
 
+
 class GameStateComplete:
     def __init__(self, game) -> None:
         self.game = game
@@ -20,15 +20,15 @@ class GameStateComplete:
 
         self.hud = Hud(game.game_vars, self.font)
 
-        px.tilemaps[BG_TM_INDEX] = \
-            px.Tilemap.from_tmx("assets/" + TITLE_SCREEN_MAP_FILE, 
-                                BG_TM_INDEX)
-        
+        px.tilemaps[BG_TM_INDEX] = px.Tilemap.from_tmx(  # type: ignore[assignment]
+            "assets/" + TITLE_SCREEN_MAP_FILE, BG_TM_INDEX
+        )
+
         self.scroll_x = 0
 
         self.music = load_music(MUSIC_GAME_COMPLETE)
         play_music(self.music, True, num_channels=3)
-    
+
     def on_exit(self):
         stop_music(3)
 
@@ -37,17 +37,17 @@ class GameStateComplete:
         if self.scroll_x <= -VIEW_WIDTH:
             self.scroll_x += VIEW_WIDTH
 
-        if self.input.has_tapped(input.BUTTON_1) or \
-            self.input.has_tapped(input.BUTTON_2):
+        if self.input.has_tapped(input.BUTTON_1) or self.input.has_tapped(
+            input.BUTTON_2
+        ):
             self.game.go_to_titles()
-    
+
     def draw(self):
-        px.bltm(self.scroll_x, 0, BG_TM_INDEX, 
-                0, 0, VIEW_WIDTH, MAP_HEIGHT)
-        px.bltm(self.scroll_x + VIEW_WIDTH, 0, BG_TM_INDEX, 
-                0, 0, VIEW_WIDTH, MAP_HEIGHT)
+        px.bltm(self.scroll_x, 0, BG_TM_INDEX, 0, 0, VIEW_WIDTH, MAP_HEIGHT)
+        px.bltm(
+            self.scroll_x + VIEW_WIDTH, 0, BG_TM_INDEX, 0, 0, VIEW_WIDTH, MAP_HEIGHT
+        )
 
         self.font.draw_text(56, 72, "THANKS FOR PLAYING")
         self.font.draw_text(88, 96, "FINAL SCORE")
         self.font.draw_text(104, 112, f"{self.game.game_vars.score}")
-    

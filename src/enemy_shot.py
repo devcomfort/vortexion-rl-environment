@@ -1,10 +1,10 @@
-
 import pyxel as px
 
 from const import APP_WIDTH, EntityType
 from sprite import Sprite
 
 SIZE = 4
+
 
 class EnemyShot(Sprite):
     def __init__(self, game_state, x, y, vx, vy, delay=0) -> None:
@@ -17,14 +17,14 @@ class EnemyShot(Sprite):
         self.vx = vx
         self.vy = vy
 
-        self.colour = 11 # yellow
+        self.colour = 11  # yellow
         self.u = 6
         self.v = 102
 
         self.delay = delay
 
     def collide_background(self, bg):
-        if bg.is_point_colliding(self.x + 2, self.y + 2): # centre pixel
+        if bg.is_point_colliding(self.x + 2, self.y + 2):  # centre pixel
             self.collided_with(bg)
             return True
         return False
@@ -47,8 +47,12 @@ class EnemyShot(Sprite):
         if self.collide_background(self.game_state.background):
             return
 
-        if self.x > APP_WIDTH or self.x + self.w < 0 or \
-            self.y < 16 or self.y + self.h >= 176:
+        if (
+            self.x > APP_WIDTH
+            or self.x + self.w < 0
+            or self.y < 16
+            or self.y + self.h >= 176
+        ):
             self.remove = True
             return
 

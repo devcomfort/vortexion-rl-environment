@@ -1,13 +1,13 @@
-
 import pyxel as px
 
 from const import MAX_WEAPONS, MAX_WEAPON_LEVEL, WEAPON_NAMES
+
 
 class Hud:
     def __init__(self, game_vars, font) -> None:
         self.game_vars = game_vars
         self.font = font
-    
+
     def draw_weapon_level(self, i, x, y):
         self.font.draw_text(x + 16, y, WEAPON_NAMES[i])
         px.blt(x + 24, y, 0, i * 16, 224, 16, 8)
@@ -22,8 +22,8 @@ class Hud:
 
     def draw(self):
         # top and bottom bg
-        px.rect(0,0, 256, 16, 1)
-        px.rect(0,176, 256, 16, 1)
+        px.rect(0, 0, 256, 16, 1)
+        px.rect(0, 176, 256, 16, 1)
 
         # top
         self.font.draw_text(24, 0, "1UP")

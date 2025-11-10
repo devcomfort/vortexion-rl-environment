@@ -1,4 +1,3 @@
-
 import pyxel as px
 
 import input
@@ -14,6 +13,7 @@ MUSIC_FILE = "music_title.json"
 BG_TM_INDEX = 0
 FG_TM_INDEX = 1
 
+
 class GameStateTitles:
     def __init__(self, game) -> None:
         self.game = game
@@ -22,33 +22,33 @@ class GameStateTitles:
 
         self.hud = Hud(game.game_vars, self.font)
 
-        px.tilemaps[BG_TM_INDEX] = \
-            px.Tilemap.from_tmx("assets/" + TILEMAP_FILE, 
-                                BG_TM_INDEX)
-        px.tilemaps[FG_TM_INDEX] = \
-            px.Tilemap.from_tmx("assets/" + TILEMAP_FILE, 
-                                FG_TM_INDEX)
-        
+        px.tilemaps[BG_TM_INDEX] = px.Tilemap.from_tmx(
+            "assets/" + TILEMAP_FILE, BG_TM_INDEX
+        )
+        px.tilemaps[FG_TM_INDEX] = px.Tilemap.from_tmx(
+            "assets/" + TILEMAP_FILE, FG_TM_INDEX
+        )
+
         self.scroll_x = 0
-        
+
         self.selections = {
-            0 : {
-                "loc" : [96,112],
-                "label" : "GAME START",
-                "action" : self.game.go_to_new_game,
-                },
-            1 : {
-                "loc" : [96,128],
-                "label" : "CONTINUE",
-                "action" : self.game.go_to_continue,
-                },
+            0: {
+                "loc": [96, 112],
+                "label": "GAME START",
+                "action": self.game.go_to_new_game,
+            },
+            1: {
+                "loc": [96, 128],
+                "label": "CONTINUE",
+                "action": self.game.go_to_continue,
+            },
         }
-        
+
         self.selected_index = 0
 
         self.music = load_music(MUSIC_FILE)
         play_music(self.music)
-    
+
     def on_exit(self):
         px.stop()
 
@@ -57,20 +57,20 @@ class GameStateTitles:
         if self.scroll_x <= -VIEW_WIDTH:
             self.scroll_x += VIEW_WIDTH
 
-        if self.input.has_tapped(input.UP) or \
-            self.input.has_tapped(input.DOWN):
+        if self.input.has_tapped(input.UP) or self.input.has_tapped(input.DOWN):
             self.selected_index = 0 if self.selected_index == 1 else 1
 
-        if self.input.has_tapped(input.BUTTON_1) or \
-            self.input.has_tapped(input.BUTTON_2):
+        if self.input.has_tapped(input.BUTTON_1) or self.input.has_tapped(
+            input.BUTTON_2
+        ):
             (self.selections[self.selected_index]["action"])()
-    
+
     def draw(self):
-        px.bltm(self.scroll_x, 16, BG_TM_INDEX, 
-                0, 0, VIEW_WIDTH, MAP_HEIGHT)
-        px.bltm(self.scroll_x + VIEW_WIDTH, 16, BG_TM_INDEX, 
-                0, 0, VIEW_WIDTH, MAP_HEIGHT)
-        
+        px.bltm(self.scroll_x, 16, BG_TM_INDEX, 0, 0, VIEW_WIDTH, MAP_HEIGHT)
+        px.bltm(
+            self.scroll_x + VIEW_WIDTH, 16, BG_TM_INDEX, 0, 0, VIEW_WIDTH, MAP_HEIGHT
+        )
+
         px.bltm(0, 16, FG_TM_INDEX, 0, 0, VIEW_WIDTH, MAP_HEIGHT, 0)
 
         for k, v in self.selections.items():
@@ -82,4 +82,3 @@ class GameStateTitles:
         self.hud.draw()
 
         px.text(8, 152, f"v{APP_VERSION}", 4)
-    

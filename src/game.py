@@ -1,4 +1,3 @@
-
 from enum import Enum, auto
 
 from game_state_titles import GameStateTitles
@@ -6,21 +5,23 @@ from game_state_stage import GameStateStage
 from game_state_complete import GameStateComplete
 from game_vars import GameVars
 
+
 class GameState(Enum):
     NONE = 0
     TITLES = auto()
     STAGE = auto()
     GAME_COMPLETE = auto()
 
+
 class Game:
     def __init__(self, app) -> None:
         self.app = app
         self.next_state = None
         self.game_vars = GameVars(self)
-        
+
         self.state = GameStateTitles(self)
-        #self.state = GameStateStage(self)
-        #self.state = GameStateComplete(self)
+        # self.state = GameStateStage(self)
+        # self.state = GameStateComplete(self)
 
     def go_to_titles(self):
         self.next_state = GameState.TITLES
@@ -55,12 +56,11 @@ class Game:
         self.state.on_exit()
         self.state = new_state(self)
         self.next_state = None
-    
+
     def update(self):
         if self.next_state is not None:
             self.switch_state()
         self.state.update()
-    
+
     def draw(self):
         self.state.draw()
-    
