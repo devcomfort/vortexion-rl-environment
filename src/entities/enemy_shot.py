@@ -1,10 +1,10 @@
 import pyxel as px
 
-import const
+import config
 from systems.sprite import Sprite
 
-APP_WIDTH = const.APP_WIDTH
-EntityType = const.EntityType
+APP_WIDTH = config.APP_WIDTH
+EntityType = config.EntityType
 
 SIZE = 4
 

@@ -3,13 +3,13 @@ from enum import IntEnum, auto
 import math
 import pyxel as px
 
-import const
+import config
 from systems.audio import SoundType, play_sound
 from systems.sprite import Sprite
 
-MAX_COLOURS = const.MAX_COLOURS
-EntityType = const.EntityType
-MAX_WEAPONS = const.MAX_WEAPONS
+MAX_COLOURS = config.MAX_COLOURS
+EntityType = config.EntityType
+MAX_WEAPONS = config.MAX_WEAPONS
 
 SPEED = 1
 

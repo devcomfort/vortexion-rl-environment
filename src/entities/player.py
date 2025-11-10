@@ -1,13 +1,13 @@
 import pyxel as px
 
-import const
+import config
 from entities import player_shot
 from systems import input
 from systems.sprite import Sprite
 
-APP_WIDTH = const.APP_WIDTH
-APP_HEIGHT = const.APP_HEIGHT
-EntityType = const.EntityType
+APP_WIDTH = config.APP_WIDTH
+APP_HEIGHT = config.APP_HEIGHT
+EntityType = config.EntityType
 
 MOVE_SPEED = 2
 MOVE_SPEED_DIAGONAL = MOVE_SPEED * 0.707

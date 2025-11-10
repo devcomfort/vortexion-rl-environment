@@ -2,7 +2,7 @@ from enum import Enum, auto
 
 import pyxel as px
 
-import const
+import config
 from entities import Explosion, Player, Powerup, StageBackground
 from systems import input
 from systems.audio import (
@@ -19,11 +19,11 @@ from systems.sprite import (
 )
 from ui import Hud
 
-FINAL_STAGE = const.FINAL_STAGE
-STAGE_MUSIC_FILES = const.STAGE_MUSIC_FILES
-MUSIC_GAME_OVER = const.MUSIC_GAME_OVER
-MUSIC_BOSS = const.MUSIC_BOSS
-MUSIC_STAGE_CLEAR = const.MUSIC_STAGE_CLEAR
+FINAL_STAGE = config.FINAL_STAGE
+STAGE_MUSIC_FILES = config.STAGE_MUSIC_FILES
+MUSIC_GAME_OVER = config.MUSIC_GAME_OVER
+MUSIC_BOSS = config.MUSIC_BOSS
+MUSIC_STAGE_CLEAR = config.MUSIC_STAGE_CLEAR
 
 
 class State(Enum):

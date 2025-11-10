@@ -1,9 +1,9 @@
 import pyxel as px
 
-import const
+import config
 from entities.enemy import Enemy
 
-ENEMY_SCORE_BOSS = const.ENEMY_SCORE_BOSS
+ENEMY_SCORE_BOSS = config.ENEMY_SCORE_BOSS
 
 BULLET_SPEED = 2.5
 MOVE_SPEED_Y = 0.5

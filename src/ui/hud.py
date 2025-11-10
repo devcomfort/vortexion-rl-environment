@@ -1,10 +1,10 @@
 import pyxel as px
 
-import const
+import config
 
-MAX_WEAPONS = const.MAX_WEAPONS
-MAX_WEAPON_LEVEL = const.MAX_WEAPON_LEVEL
-WEAPON_NAMES = const.WEAPON_NAMES
+MAX_WEAPONS = config.MAX_WEAPONS
+MAX_WEAPON_LEVEL = config.MAX_WEAPON_LEVEL
+WEAPON_NAMES = config.WEAPON_NAMES
 
 
 class Hud:

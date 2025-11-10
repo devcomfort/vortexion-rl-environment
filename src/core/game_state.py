@@ -3,15 +3,15 @@ from typing import Callable, List
 
 import numpy as np
 
-import const
+import config
 
-STARTING_LIVES = const.STARTING_LIVES
-MAX_WEAPONS = const.MAX_WEAPONS
-MAX_SCORE = const.MAX_SCORE
-MAX_WEAPON_LEVEL = const.MAX_WEAPON_LEVEL
-MAX_LIVES = const.MAX_LIVES
-StageNum = const.StageNum
-FINAL_STAGE = const.FINAL_STAGE
+STARTING_LIVES = config.STARTING_LIVES
+MAX_WEAPONS = config.MAX_WEAPONS
+MAX_SCORE = config.MAX_SCORE
+MAX_WEAPON_LEVEL = config.MAX_WEAPON_LEVEL
+MAX_LIVES = config.MAX_LIVES
+StageNum = config.StageNum
+FINAL_STAGE = config.FINAL_STAGE
 
 
 @dataclass

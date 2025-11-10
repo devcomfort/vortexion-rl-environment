@@ -1,6 +1,6 @@
 import pyxel as px
 
-import const
+import config
 from entities import enemy_spawn
 from entities.enemy_spawn import ENEMY_SPAWN_TILE_INDEX_Y
 from systems.audio import (
@@ -9,7 +9,7 @@ from systems.audio import (
     reset_music_gain,
 )
 
-EntityType = const.EntityType
+EntityType = config.EntityType
 
 VIEW_WIDTH = 256
 VIEW_HEIGHT = 160

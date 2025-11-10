@@ -1,19 +1,19 @@
 import pyxel as px
 
-import const
+import config
 from core import Game
 from systems import Input
 from ui import MonospaceBitmapFont
 
-APP_WIDTH = const.APP_WIDTH
-APP_HEIGHT = const.APP_HEIGHT
-APP_NAME = const.APP_NAME
-APP_DISPLAY_SCALE = const.APP_DISPLAY_SCALE
-APP_CAPTURE_SCALE = const.APP_CAPTURE_SCALE
-APP_FPS = const.APP_FPS
-APP_GFX_FILE = const.APP_GFX_FILE
-PALETTE = const.PALETTE
-SOUNDS_RES_FILE = const.SOUNDS_RES_FILE
+APP_WIDTH = config.APP_WIDTH
+APP_HEIGHT = config.APP_HEIGHT
+APP_NAME = config.APP_NAME
+APP_DISPLAY_SCALE = config.APP_DISPLAY_SCALE
+APP_CAPTURE_SCALE = config.APP_CAPTURE_SCALE
+APP_FPS = config.APP_FPS
+APP_GFX_FILE = config.APP_GFX_FILE
+PALETTE = config.PALETTE
+SOUNDS_RES_FILE = config.SOUNDS_RES_FILE
 
 
 class App:
