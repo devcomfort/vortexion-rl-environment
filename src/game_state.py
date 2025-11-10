@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
 from typing import Callable, List
 
+import numpy as np
+
 from const import (
     STARTING_LIVES,
     MAX_WEAPONS,
@@ -75,17 +77,17 @@ class GameState:
     def __post_init__(self):
         """Validate and normalize field values after initialization."""
         # Validate and clamp score
-        self.score = max(0, min(MAX_SCORE, self.score))
-        self.high_score = max(0, min(MAX_SCORE, self.high_score))
+        self.score = int(np.clip(self.score, 0, MAX_SCORE))
+        self.high_score = int(np.clip(self.high_score, 0, MAX_SCORE))
 
         # Validate and clamp lives
-        self.lives = max(0, min(MAX_LIVES, self.lives))
+        self.lives = int(np.clip(self.lives, 0, MAX_LIVES))
 
         # Validate weapon_levels length and values
         if len(self.weapon_levels) != MAX_WEAPONS:
             self.weapon_levels = [0] * MAX_WEAPONS
         self.weapon_levels = [
-            max(0, min(MAX_WEAPON_LEVEL, level)) for level in self.weapon_levels
+            int(np.clip(level, 0, MAX_WEAPON_LEVEL)) for level in self.weapon_levels
         ]
 
         # Validate selected_weapon index
@@ -149,14 +151,14 @@ class GameState:
     def add_life(self):
         """Add one life, respecting maximum limit."""
         old_lives = self.lives
-        self.lives = min(MAX_LIVES, self.lives + 1)
+        self.lives = int(np.clip(self.lives + 1, 0, MAX_LIVES))
         if self.lives != old_lives:
             self._notify("lives", self.lives)
 
     def subtract_life(self):
         """Subtract one life, respecting minimum limit."""
         old_lives = self.lives
-        self.lives = max(0, self.lives - 1)
+        self.lives = int(np.clip(self.lives - 1, 0, MAX_LIVES))
         if self.lives != old_lives:
             self._notify("lives", self.lives)
 
@@ -164,7 +166,7 @@ class GameState:
         """Add score and update high score if necessary."""
         old_score = self.score
         old_high_score = self.high_score
-        self.score = min(MAX_SCORE, self.score + amount)
+        self.score = int(np.clip(self.score + amount, 0, MAX_SCORE))
         self.high_score = max(self.score, self.high_score)
         if self.score != old_score:
             self._notify("score", self.score)
@@ -176,7 +178,9 @@ class GameState:
         changed = False
         for i in range(len(self.weapon_levels)):
             old_level = self.weapon_levels[i]
-            self.weapon_levels[i] = max(0, self.weapon_levels[i] - amount)
+            self.weapon_levels[i] = int(
+                np.clip(self.weapon_levels[i] - amount, 0, MAX_WEAPON_LEVEL)
+            )
             if self.weapon_levels[i] != old_level:
                 changed = True
         if changed:
@@ -187,8 +191,8 @@ class GameState:
         changed = False
         for i in range(len(self.weapon_levels)):
             old_level = self.weapon_levels[i]
-            self.weapon_levels[i] = min(
-                MAX_WEAPON_LEVEL, self.weapon_levels[i] + amount
+            self.weapon_levels[i] = int(
+                np.clip(self.weapon_levels[i] + amount, 0, MAX_WEAPON_LEVEL)
             )
             if self.weapon_levels[i] != old_level:
                 changed = True
@@ -206,8 +210,8 @@ class GameState:
     def add_current_weapon_level(self):
         """Increase the current weapon's level."""
         old_level = self.weapon_levels[self.selected_weapon]
-        self.weapon_levels[self.selected_weapon] = min(
-            MAX_WEAPON_LEVEL, self.weapon_levels[self.selected_weapon] + 1
+        self.weapon_levels[self.selected_weapon] = int(
+            np.clip(self.weapon_levels[self.selected_weapon] + 1, 0, MAX_WEAPON_LEVEL)
         )
         if self.weapon_levels[self.selected_weapon] != old_level:
             self._notify("weapon_levels", self.weapon_levels)
