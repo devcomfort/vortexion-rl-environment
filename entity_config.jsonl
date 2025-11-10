@@ -1,0 +1,21 @@
+{"type": "enemy_a", "speed": 1, "bullet_speed": 2, "shot_delay": 120, "initial_shot_delay": 20}
+{"type": "enemy_b", "speed": 1.5, "bullet_speed": 2}
+{"type": "enemy_c", "bullet_speed": 2}
+{"type": "enemy_d", "speed_y": 2, "speed_x_offset": 0.25}
+{"type": "enemy_e", "speed": 1, "bullet_speed": 2}
+{"type": "enemy_f", "bullet_speed": 2}
+{"type": "enemy_g", "speed_y": 1.5, "speed_x_offset": 0.5}
+{"type": "enemy_h", "speed_x": 1.5, "bounce_vel": 5, "gravity": 0.2}
+{"type": "enemy_i", "bullet_speed": 1.5, "speed": 1.5, "vel_y": [-0.5, 1, -1.25, 1.25, -1, 0.5], "vel_y_change_interval": 45}
+{"type": "enemy_j", "bullet_speed": 1.5, "shot_interval": 120}
+{"type": "enemy_k", "bullet_speed": 2.5, "move_speed_y": 0.5, "shoot_interval_alone": 60, "shoot_interval_with_enemies": 200}
+{"type": "enemy_l", "bullet_speed": 1.5, "shoot_interval_alone": 60, "shoot_interval_with_enemies": 200}
+{"type": "enemy_m", "bullet_speed": 1.5, "shoot_interval_alone": 60, "shoot_interval_with_enemies": 200}
+{"type": "enemy_n", "speed_x": 4, "speed_y": 0.5}
+{"type": "enemy_o", "speed": 2.5, "bullet_speed": 2, "shot_delay": 120, "initial_shot_delay": 40}
+{"type": "enemy_p", "speed": 2.5, "bullet_speed": 4, "shot_delay": 120, "initial_shot_delay": 25}
+{"type": "player", "move_speed": 2, "move_speed_diagonal": 1.414, "shot_delay": 10, "invincibility_frames": 120}
+{"type": "player_shot", "max_shots": 4, "size": 14, "speed_lvl": [10, 10, 11, 11, 12, 12], "damage": {"0": [1, 1, 1, 1, 1, 2], "1": [1, 1, 1, 2, 2, 3], "2": [1, 1, 2, 2, 3, 3]}, "spread_diagonal_x": 0.894, "spread_diagonal_y": 0.447}
+{"type": "enemy_shot", "size": 4, "colour_change_interval": 10}
+{"type": "powerup", "speed": 0.5}
+
