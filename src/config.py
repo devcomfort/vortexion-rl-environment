@@ -34,6 +34,16 @@ APP_WIDTH = _config.getint("app", "width")
 APP_HEIGHT = _config.getint("app", "height")
 APP_NAME = _config.get("app", "name")
 APP_FPS = _config.getint("app", "fps")
+APP_SPEED_MULTIPLIER = _config.getfloat("app", "speed_multiplier", fallback=1.0)
+APP_MIN_SPEED_MULTIPLIER = _config.getfloat(
+    "app", "min_speed_multiplier", fallback=0.25
+)
+APP_MAX_SPEED_MULTIPLIER = (
+    _config.getfloat("app", "max_speed_multiplier", fallback=None)
+    if _config.get("app", "max_speed_multiplier", fallback="").strip()
+    else None
+)
+APP_SPEED_STEP = _config.getfloat("app", "speed_step", fallback=0.25)
 APP_DISPLAY_SCALE = _config.getint("app", "display_scale")
 APP_CAPTURE_SCALE = _config.getint("app", "capture_scale")
 APP_GFX_FILE = _config.get("app", "gfx_file")
