@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VORTEXION - Pyxel Web</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .info {
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        .controls h3 {
+            margin-top: 0;
+        }
+
+        .controls ul {
+            text-align: left;
+            display: inline-block;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/kitao/pyxel/wasm/pyxel.js"></script>
+</head>
+
+<body>
+    <h1>VORTEXION</h1>
+    <div class="info">
+        <p>MSX/SG-1000 inspired shoot-em-up game</p>
+    </div>
+    <div class="game-container">
+        <pyxel-run root="src" name="main.py" gamepad="enabled"></pyxel-run>
+    </div>
+    <div class="controls">
+        <h3>Controls</h3>
+        <ul>
+            <li>WASD keys, Arrow keys, or gamepad D-pad to move</li>
+            <li>Z/U key or gamepad Button 1 to fire weapon</li>
+            <li>X/I key or gamepad Button 2 to pause</li>
+            <li>ESC key to exit</li>
+        </ul>
+    </div>
+</body>
+
+</html>
