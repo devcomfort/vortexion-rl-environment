@@ -36,7 +36,10 @@ class GraphicsConfigSchema(BaseModel):
     """
 
     max_colours: int = Field(
-        default=16, ge=1, le=256, description="Maximum number of colors in palette (1-256)"
+        default=16,
+        ge=1,
+        le=256,
+        description="Maximum number of colors in palette (1-256)",
     )
     palette: List[int] = Field(
         default_factory=lambda: [
@@ -92,4 +95,3 @@ class GraphicsConfigSchema(BaseModel):
         """Pydantic configuration."""
 
         frozen = True  # Make schema immutable
-

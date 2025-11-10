@@ -1,9 +1,11 @@
 import pyxel as px
 
-import input
-from hud import Hud
-from const import APP_VERSION
-from audio import load_music, play_music
+import const
+from systems import input
+from systems.audio import load_music, play_music
+from ui import Hud
+
+APP_VERSION = const.APP_VERSION
 
 VIEW_WIDTH = 256
 MAP_HEIGHT = 160

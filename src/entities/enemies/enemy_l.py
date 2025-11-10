@@ -1,8 +1,9 @@
 import pyxel as px
 
-from enemy import Enemy
-from const import ENEMY_SCORE_BOSS
+import const
+from entities.enemy import Enemy
 
+ENEMY_SCORE_BOSS = const.ENEMY_SCORE_BOSS
 BULLET_SPEED = 1.5
 
 

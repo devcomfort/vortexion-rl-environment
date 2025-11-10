@@ -1,4 +1,4 @@
-from enemy import Enemy
+from entities.enemy import Enemy
 
 SPEED_X = 1.5
 BOUNCE_VEL = 5

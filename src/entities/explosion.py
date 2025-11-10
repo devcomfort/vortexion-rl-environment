@@ -1,7 +1,7 @@
 import pyxel as px
 
-from sprite import Sprite
-from audio import play_sound, SoundType
+from systems.audio import SoundType, play_sound
+from systems.sprite import Sprite
 
 FRAMES = ((0, 64), (16, 64), (32, 64))
 MAX_FRAMES = len(FRAMES)

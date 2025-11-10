@@ -1,10 +1,15 @@
 import pyxel as px
 
-from sprite import Sprite
-from const import EntityType, ENEMY_SCORE_NORMAL, BOMB_DAMAGE, PLAYER_SHOT_DAMAGE
-from enemy_shot import EnemyShot
-import powerup
-from audio import play_sound, SoundType
+import const
+from entities import powerup
+from entities.enemy_shot import EnemyShot
+from systems.audio import SoundType, play_sound
+from systems.sprite import Sprite
+
+EntityType = const.EntityType
+ENEMY_SCORE_NORMAL = const.ENEMY_SCORE_NORMAL
+BOMB_DAMAGE = const.BOMB_DAMAGE
+PLAYER_SHOT_DAMAGE = const.PLAYER_SHOT_DAMAGE
 
 HIT_FRAMES = 5
 INVINCIBLE_START_FRAMES = 15

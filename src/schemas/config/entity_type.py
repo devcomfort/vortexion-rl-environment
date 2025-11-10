@@ -34,4 +34,3 @@ class EntityTypeSchema(BaseModel):
         """Pydantic configuration."""
 
         frozen = True  # Make schema immutable
-

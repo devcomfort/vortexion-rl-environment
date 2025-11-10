@@ -2,26 +2,28 @@ from enum import Enum, auto
 
 import pyxel as px
 
-from const import (
-    FINAL_STAGE,
-    STAGE_MUSIC_FILES,
-    MUSIC_GAME_OVER,
-    MUSIC_BOSS,
-    MUSIC_STAGE_CLEAR,
+import const
+from entities import Explosion, Player, Powerup, StageBackground
+from systems import input
+from systems.audio import (
+    is_music_playing,
+    load_music,
+    play_music,
+    stop_music,
 )
-from player import Player
-from sprite import (
-    sprites_update,
-    sprites_draw,
-    sprite_lists_collide,
+from systems.sprite import (
     sprite_collide_list,
+    sprite_lists_collide,
+    sprites_draw,
+    sprites_update,
 )
-from hud import Hud
-from explosion import Explosion
-from powerup import Powerup
-from stage_background import StageBackground
-import input
-from audio import load_music, play_music, is_music_playing, stop_music
+from ui import Hud
+
+FINAL_STAGE = const.FINAL_STAGE
+STAGE_MUSIC_FILES = const.STAGE_MUSIC_FILES
+MUSIC_GAME_OVER = const.MUSIC_GAME_OVER
+MUSIC_BOSS = const.MUSIC_BOSS
+MUSIC_STAGE_CLEAR = const.MUSIC_STAGE_CLEAR
 
 
 class State(Enum):

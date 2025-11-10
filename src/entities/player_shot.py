@@ -1,5 +1,8 @@
-from const import APP_WIDTH, EntityType
-from sprite import Sprite
+import const
+from systems.sprite import Sprite
+
+APP_WIDTH = const.APP_WIDTH
+EntityType = const.EntityType
 
 MAX_SHOTS = 4
 UV_FRAME_OFFSET = 1

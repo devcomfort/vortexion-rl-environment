@@ -1,7 +1,7 @@
 import math
 import pyxel as px
 
-from enemy import Enemy
+from entities.enemy import Enemy
 
 SPEED = 1.5
 

@@ -55,4 +55,3 @@ def clip(value, min_val, max_val):
     if HAS_NUMPY:
         return np.clip(value, min_val, max_val)
     return max(min_val, min(max_val, value))
-

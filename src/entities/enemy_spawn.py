@@ -1,19 +1,19 @@
-from enemy_a import EnemyA
-from enemy_b import EnemyB
-from enemy_c import EnemyC
-from enemy_d import EnemyD
-from enemy_e import EnemyE
-from enemy_f import EnemyF
-from enemy_g import EnemyG
-from enemy_h import EnemyH
-from enemy_i import EnemyI
-from enemy_j import EnemyJ  # Defence Turret for Boss
-from enemy_k import EnemyK  # Boss 1 circle
-from enemy_l import EnemyL  # Boss 2: big leaves
-from enemy_m import EnemyM  # Boss 3: eye
-from enemy_n import EnemyN
-from enemy_o import EnemyO
-from enemy_p import EnemyP
+from entities.enemies.enemy_a import EnemyA
+from entities.enemies.enemy_b import EnemyB
+from entities.enemies.enemy_c import EnemyC
+from entities.enemies.enemy_d import EnemyD
+from entities.enemies.enemy_e import EnemyE
+from entities.enemies.enemy_f import EnemyF
+from entities.enemies.enemy_g import EnemyG
+from entities.enemies.enemy_h import EnemyH
+from entities.enemies.enemy_i import EnemyI
+from entities.enemies.enemy_j import EnemyJ  # Defence Turret for Boss
+from entities.enemies.enemy_k import EnemyK  # Boss 1 circle
+from entities.enemies.enemy_l import EnemyL  # Boss 2: big leaves
+from entities.enemies.enemy_m import EnemyM  # Boss 3: eye
+from entities.enemies.enemy_n import EnemyN
+from entities.enemies.enemy_o import EnemyO
+from entities.enemies.enemy_p import EnemyP
 
 ENEMY_SPAWN_TILE_X = {
     0: EnemyA,

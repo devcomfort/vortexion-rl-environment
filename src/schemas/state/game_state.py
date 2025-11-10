@@ -8,7 +8,7 @@ from typing import List
 
 from pydantic import BaseModel, Field, field_validator
 
-from ..state.stage import StageSchema
+from .stage import StageSchema
 
 
 class GameStateSchema(BaseModel):

@@ -1,4 +1,4 @@
-from enemy import Enemy
+from entities.enemy import Enemy
 
 SPEED_X = 4
 SPEED_Y = 0.5

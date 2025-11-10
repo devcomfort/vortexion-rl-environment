@@ -37,10 +37,16 @@ class GameMechanicsSchema(BaseModel):
     """
 
     enemy_score_normal: int = Field(
-        default=100, ge=1, le=10000, description="Score awarded for defeating a normal enemy (1-10000)"
+        default=100,
+        ge=1,
+        le=10000,
+        description="Score awarded for defeating a normal enemy (1-10000)",
     )
     enemy_score_boss: int = Field(
-        default=5000, ge=1, le=100000, description="Score awarded for defeating a boss enemy (1-100000)"
+        default=5000,
+        ge=1,
+        le=100000,
+        description="Score awarded for defeating a boss enemy (1-100000)",
     )
     player_shot_damage: int = Field(
         default=1, ge=1, le=100, description="Damage dealt by player shots (1-100)"
@@ -53,4 +59,3 @@ class GameMechanicsSchema(BaseModel):
         """Pydantic configuration."""
 
         frozen = True  # Make schema immutable
-

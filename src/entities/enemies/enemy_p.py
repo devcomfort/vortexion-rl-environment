@@ -1,4 +1,4 @@
-from enemy import Enemy
+from entities.enemy import Enemy
 
 SPEED = 2.5
 BULLET_SPEED = 4

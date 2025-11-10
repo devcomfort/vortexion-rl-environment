@@ -3,15 +3,15 @@ from typing import Callable, List
 
 import numpy as np
 
-from const import (
-    STARTING_LIVES,
-    MAX_WEAPONS,
-    MAX_SCORE,
-    MAX_WEAPON_LEVEL,
-    MAX_LIVES,
-    StageNum,
-    FINAL_STAGE,
-)
+import const
+
+STARTING_LIVES = const.STARTING_LIVES
+MAX_WEAPONS = const.MAX_WEAPONS
+MAX_SCORE = const.MAX_SCORE
+MAX_WEAPON_LEVEL = const.MAX_WEAPON_LEVEL
+MAX_LIVES = const.MAX_LIVES
+StageNum = const.StageNum
+FINAL_STAGE = const.FINAL_STAGE
 
 
 @dataclass

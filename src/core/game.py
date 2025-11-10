@@ -1,9 +1,7 @@
 from enum import Enum, auto
 
-from game_state_titles import GameStateTitles
-from game_state_stage import GameStateStage
-from game_state_complete import GameStateComplete
-from game_state import GameState
+from core.game_state import GameState
+from states import GameStateTitles, GameStateStage, GameStateComplete
 
 
 class GameStateType(Enum):

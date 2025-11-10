@@ -1,9 +1,11 @@
 import pyxel as px
 
-import input
-from hud import Hud
-from const import MUSIC_GAME_COMPLETE
-from audio import load_music, play_music, stop_music
+import const
+from systems import input
+from systems.audio import load_music, play_music, stop_music
+from ui import Hud
+
+MUSIC_GAME_COMPLETE = const.MUSIC_GAME_COMPLETE
 
 VIEW_WIDTH = 256
 MAP_HEIGHT = 192

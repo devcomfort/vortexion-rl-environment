@@ -1,9 +1,15 @@
 import pyxel as px
 
-from enemy_spawn import ENEMY_SPAWN_TILE_INDEX_Y
-import enemy_spawn
-from const import EntityType
-from audio import reset_music_gain, fade_out_music, SOUND_CHANNEL_GAIN_DEFAULT
+import const
+from entities import enemy_spawn
+from entities.enemy_spawn import ENEMY_SPAWN_TILE_INDEX_Y
+from systems.audio import (
+    SOUND_CHANNEL_GAIN_DEFAULT,
+    fade_out_music,
+    reset_music_gain,
+)
+
+EntityType = const.EntityType
 
 VIEW_WIDTH = 256
 VIEW_HEIGHT = 160
