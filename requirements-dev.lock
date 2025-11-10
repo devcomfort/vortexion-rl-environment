@@ -12,20 +12,12 @@
 -e file:.
 annotated-types==0.7.0
     # via pydantic
-antlr4-python3-runtime==4.9.3
-    # via hydra-core
-    # via omegaconf
-hydra-core==1.3.2
-    # via vortexion
 iniconfig==2.3.0
     # via pytest
 numpy==2.3.4
     # via pandas
     # via vortexion
-omegaconf==2.3.0
-    # via hydra-core
 packaging==25.0
-    # via hydra-core
     # via pytest
 pandas==2.3.3
     # via vortexion
@@ -44,8 +36,6 @@ pytz==2025.2
     # via pandas
 pyxel==2.5.10
     # via vortexion
-pyyaml==6.0.3
-    # via omegaconf
 six==1.17.0
     # via python-dateutil
 typing-extensions==4.15.0
