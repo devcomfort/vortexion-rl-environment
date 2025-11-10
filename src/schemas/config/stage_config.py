@@ -8,7 +8,7 @@ from typing import Dict
 
 from pydantic import BaseModel, Field
 
-from .stage import StageSchema
+from ..state.stage import StageSchema
 
 
 class StageConfigSchema(BaseModel):
@@ -66,7 +66,9 @@ class StageConfigSchema(BaseModel):
     music_game_over: str = Field(
         default="music_game_over.json", description="Game over music file path"
     )
-    music_boss: str = Field(default="music_boss.json", description="Boss music file path")
+    music_boss: str = Field(
+        default="music_boss.json", description="Boss music file path"
+    )
     music_stage_clear: str = Field(
         default="music_stage_clear.json", description="Stage clear music file path"
     )
@@ -75,4 +77,3 @@ class StageConfigSchema(BaseModel):
         """Pydantic configuration."""
 
         frozen = True  # Make schema immutable
-
