@@ -8,7 +8,7 @@ from .graphics_config import GraphicsConfigSchema
 from .resources import (
     AudioResourcesSchema,
     GraphicsResourcesSchema,
-    TilemapResourcesSchema,
+    MapResourcesSchema,
 )
 from .resources_config import ResourcesConfigSchema
 
@@ -20,6 +20,6 @@ __all__ = [
     "GraphicsConfigSchema",
     "GraphicsResourcesSchema",
     "AudioResourcesSchema",
-    "TilemapResourcesSchema",
+    "MapResourcesSchema",
     "ResourcesConfigSchema",
 ]

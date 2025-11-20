@@ -1,6 +1,6 @@
-"""Tilemap resource file paths schema.
+"""Map resource file paths schema.
 
-This module provides a Pydantic schema for tilemap resource file paths
+This module provides a Pydantic schema for map resource file paths
 and stage progression configuration.
 """
 
@@ -11,21 +11,21 @@ from pydantic import BaseModel, Field
 from ...state.stage import StageSchema
 
 
-class TilemapResourcesSchema(BaseModel):
+class MapResourcesSchema(BaseModel):
     """
-    Tilemap resource file paths schema.
+    Map resource file paths schema.
 
-    This schema represents all tilemap resource file paths used in the game
+    This schema represents all map resource file paths used in the game
     and stage progression configuration.
 
     Parameters
     ----------
     title : str, optional
-        Title screen tilemap file path. Defaults to "title.tmx".
+        Title screen map file path. Defaults to "title.tmx".
     complete : str, optional
-        Game complete screen tilemap file path. Defaults to "complete.tmx".
+        Game complete screen map file path. Defaults to "complete.tmx".
     stage_files : Dict[int, str], optional
-        Dictionary mapping stage numbers to tilemap file paths.
+        Dictionary mapping stage numbers to map file paths.
         Defaults to stage 1-5 mappings.
     final_stage : StageSchema, optional
         Final stage number. Game progression ends after completing this stage.
@@ -34,24 +34,24 @@ class TilemapResourcesSchema(BaseModel):
 
     Examples
     --------
-    >>> tilemaps = TilemapResourcesSchema()
-    >>> tilemaps.title
+    >>> maps = MapResourcesSchema()
+    >>> maps.title
     'title.tmx'
-    >>> tilemaps.stage_files[1]
+    >>> maps.stage_files[1]
     'stage_1.tmx'
-    >>> tilemaps.final_stage.stage
+    >>> maps.final_stage.stage
     5
-    >>> tilemaps.model_dump()
+    >>> maps.model_dump()
     {'title': 'title.tmx', 'complete': 'complete.tmx', 'stage_files': {...}, 'final_stage': {...}}
     """
 
     title: str = Field(
         default="title.tmx",
-        description="Title screen tilemap file path",
+        description="Title screen map file path",
     )
     complete: str = Field(
         default="complete.tmx",
-        description="Game complete screen tilemap file path",
+        description="Game complete screen map file path",
     )
     stage_files: Dict[int, str] = Field(
         default_factory=lambda: {
@@ -61,7 +61,7 @@ class TilemapResourcesSchema(BaseModel):
             4: "stage_4.tmx",
             5: "stage_5.tmx",
         },
-        description="Dictionary mapping stage numbers to tilemap file paths",
+        description="Dictionary mapping stage numbers to map file paths",
     )
     final_stage: StageSchema = Field(
         default_factory=lambda: StageSchema(stage=5),

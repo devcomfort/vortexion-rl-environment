@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field
 from .resources import (
     AudioResourcesSchema,
     GraphicsResourcesSchema,
-    TilemapResourcesSchema,
+    MapResourcesSchema,
 )
 
 
@@ -24,8 +24,8 @@ class ResourcesConfigSchema(BaseModel):
         Graphics resource file paths. Defaults to GraphicsResourcesSchema().
     audio : AudioResourcesSchema, optional
         Audio resource file paths. Defaults to AudioResourcesSchema().
-    tilemaps : TilemapResourcesSchema, optional
-        Tilemap resource file paths. Defaults to TilemapResourcesSchema().
+    maps : MapResourcesSchema, optional
+        Map resource file paths. Defaults to MapResourcesSchema().
 
     Examples
     --------
@@ -34,10 +34,10 @@ class ResourcesConfigSchema(BaseModel):
     'gfx.png'
     >>> resources.audio.music_title
     'music_title.json'
-    >>> resources.tilemaps.title
+    >>> resources.maps.title
     'title.tmx'
     >>> resources.model_dump()
-    {'graphics': {'image_file': 'gfx.png'}, 'audio': {...}, 'tilemaps': {...}}
+    {'graphics': {'image_file': 'gfx.png'}, 'audio': {...}, 'maps': {...}}
     """
 
     graphics: GraphicsResourcesSchema = Field(
@@ -48,9 +48,9 @@ class ResourcesConfigSchema(BaseModel):
         default_factory=AudioResourcesSchema,
         description="Audio resource file paths",
     )
-    tilemaps: TilemapResourcesSchema = Field(
-        default_factory=TilemapResourcesSchema,
-        description="Tilemap resource file paths",
+    maps: MapResourcesSchema = Field(
+        default_factory=MapResourcesSchema,
+        description="Map resource file paths",
     )
 
     class Config:
