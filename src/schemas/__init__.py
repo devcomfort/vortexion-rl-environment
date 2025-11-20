@@ -4,19 +4,18 @@ from .config import (
     AppConfigSchema,
     EntityTypeSchema,
     GameConfigSchema,
-    GameMechanicsSchema,
+    GameStatsSchema,
     GraphicsConfigSchema,
     StageConfigSchema,
 )
-from .state import GameStateSchema, StageSchema
+from .state import StageSchema
 
 __all__ = [
     "StageSchema",
-    "GameStateSchema",
     "GameConfigSchema",
     "AppConfigSchema",
     "StageConfigSchema",
     "EntityTypeSchema",
-    "GameMechanicsSchema",
+    "GameStatsSchema",
     "GraphicsConfigSchema",
 ]
