@@ -4,7 +4,7 @@ from .config import (
     AppConfigSchema,
     EntityTypeSchema,
     PlayerConfigSchema,
-    GameStatsSchema,
+    ScoreConfigSchema,
     GraphicsConfigSchema,
     StageConfigSchema,
 )
@@ -16,6 +16,6 @@ __all__ = [
     "AppConfigSchema",
     "StageConfigSchema",
     "EntityTypeSchema",
-    "GameStatsSchema",
+    "ScoreConfigSchema",
     "GraphicsConfigSchema",
 ]

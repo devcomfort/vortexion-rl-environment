@@ -14,7 +14,7 @@ class PlayerConfigSchema(BaseModel):
     Player configuration schema.
 
     This schema represents all player-related configuration constants including
-    initial values, maximum limits, and content data.
+    initial values, maximum limits, content data, and damage values.
 
     Parameters
     ----------
@@ -32,6 +32,10 @@ class PlayerConfigSchema(BaseModel):
     weapon_names : List[str], optional
         List of weapon names. Length must match the max_weapons value.
         Defaults to ["A", "B", "C"].
+    player_shot_damage : int, optional
+        Damage dealt by player shots (1-100). Defaults to 1.
+    bomb_damage : int, optional
+        Damage dealt by bombs (1-1000). Defaults to 30.
 
     Examples
     --------
@@ -88,6 +92,20 @@ class PlayerConfigSchema(BaseModel):
         default_factory=lambda: ["A", "B", "C"],
         min_length=1,
         description=("List of weapon names. Length must match the max_weapons value."),
+    )
+
+    # Damage values
+    player_shot_damage: int = Field(
+        default=1,
+        ge=1,
+        le=100,
+        description="Damage dealt by player shots (1-100)",
+    )
+    bomb_damage: int = Field(
+        default=30,
+        ge=1,
+        le=1000,
+        description="Damage dealt by bombs (1-1000)",
     )
 
     @field_validator("starting_lives")

@@ -3,11 +3,7 @@
 from .app_config import AppConfigSchema
 from .entity_type import EntityTypeSchema
 from .player_config import PlayerConfigSchema
-from .game_stats import (
-    DamageStatsSchema,
-    GameStatsSchema,
-    ScoreStatsSchema,
-)
+from .score_config import ScoreConfigSchema
 from .graphics_config import GraphicsConfigSchema
 from .resources import (
     AudioResourcesSchema,
@@ -21,9 +17,7 @@ __all__ = [
     "AppConfigSchema",
     "EntityTypeSchema",
     "PlayerConfigSchema",
-    "GameStatsSchema",
-    "ScoreStatsSchema",
-    "DamageStatsSchema",
+    "ScoreConfigSchema",
     "GraphicsConfigSchema",
     "GraphicsResourcesSchema",
     "AudioResourcesSchema",

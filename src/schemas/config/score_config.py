@@ -1,16 +1,16 @@
-"""Score stats configuration schema.
+"""Score configuration schema.
 
-This module provides a Pydantic schema for score-related game stats.
+This module provides a Pydantic schema for score-related configuration.
 """
 
 from pydantic import BaseModel, Field
 
 
-class ScoreStatsSchema(BaseModel):
+class ScoreConfigSchema(BaseModel):
     """
-    Score stats configuration schema.
+    Score configuration schema.
 
-    This schema represents all score-related game stats.
+    This schema represents all score-related configuration constants.
 
     Parameters
     ----------
@@ -24,7 +24,7 @@ class ScoreStatsSchema(BaseModel):
 
     Examples
     --------
-    >>> score = ScoreStatsSchema()
+    >>> score = ScoreConfigSchema()
     >>> score.max_score
     999999
     >>> score.enemy_normal
