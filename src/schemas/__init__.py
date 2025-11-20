@@ -3,7 +3,7 @@
 from .config import (
     AppConfigSchema,
     EntityTypeSchema,
-    GameConfigSchema,
+    PlayerConfigSchema,
     GameStatsSchema,
     GraphicsConfigSchema,
     StageConfigSchema,
@@ -12,7 +12,7 @@ from .state import StageSchema
 
 __all__ = [
     "StageSchema",
-    "GameConfigSchema",
+    "PlayerConfigSchema",
     "AppConfigSchema",
     "StageConfigSchema",
     "EntityTypeSchema",

@@ -1,7 +1,7 @@
 """
-Game configuration constants schema.
+Player configuration schema.
 
-This module provides a Pydantic schema for game configuration constants.
+This module provides a Pydantic schema for player-related configuration constants.
 """
 
 from typing import List
@@ -9,12 +9,12 @@ from typing import List
 from pydantic import BaseModel, Field, ValidationInfo, field_validator
 
 
-class GameConfigSchema(BaseModel):
+class PlayerConfigSchema(BaseModel):
     """
-    Game configuration constants schema.
+    Player configuration schema.
 
-    This schema represents game configuration constants for initial values
-    and content data. Maximum limits are defined in GameLimitsSchema.
+    This schema represents player-related configuration constants including
+    initial values and content data. Maximum limits are defined in GameLimitsSchema.
 
     Parameters
     ----------
@@ -26,7 +26,7 @@ class GameConfigSchema(BaseModel):
 
     Examples
     --------
-    >>> config = GameConfigSchema()
+    >>> config = PlayerConfigSchema()
     >>> config.starting_lives
     3
     >>> config.weapon_names

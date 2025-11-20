@@ -1,8 +1,8 @@
 """Configuration schemas for game constants."""
 
 from .app_config import AppConfigSchema
-from .config import GameConfigSchema
 from .entity_type import EntityTypeSchema
+from .player_config import PlayerConfigSchema
 from .game_limits import (
     GameLimitsSchema,
     PlayerLimitsSchema,
@@ -24,8 +24,8 @@ from .stage_config import StageConfigSchema
 
 __all__ = [
     "AppConfigSchema",
-    "GameConfigSchema",
     "EntityTypeSchema",
+    "PlayerConfigSchema",
     "GameLimitsSchema",
     "PlayerLimitsSchema",
     "ProgressionLimitsSchema",
