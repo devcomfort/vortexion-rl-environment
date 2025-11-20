@@ -3,11 +3,6 @@
 from .app_config import AppConfigSchema
 from .entity_type import EntityTypeSchema
 from .player_config import PlayerConfigSchema
-from .game_limits import (
-    GameLimitsSchema,
-    PlayerLimitsSchema,
-    ProgressionLimitsSchema,
-)
 from .game_stats import (
     DamageStatsSchema,
     GameStatsSchema,
@@ -26,9 +21,6 @@ __all__ = [
     "AppConfigSchema",
     "EntityTypeSchema",
     "PlayerConfigSchema",
-    "GameLimitsSchema",
-    "PlayerLimitsSchema",
-    "ProgressionLimitsSchema",
     "GameStatsSchema",
     "ScoreStatsSchema",
     "DamageStatsSchema",

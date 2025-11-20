@@ -5,7 +5,9 @@ This module provides a Pydantic schema for stage-related configuration constants
 Note: Resource file paths (music, tilemaps) are defined in resources/ module.
 """
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
+from ..state.stage import StageSchema
 
 
 class StageConfigSchema(BaseModel):
@@ -16,18 +18,30 @@ class StageConfigSchema(BaseModel):
     Resource file paths (music files, tilemap files) are defined separately
     in the resources/ module.
 
-    Note: This schema is currently minimal as most stage-related settings
-    have been moved to more appropriate modules:
-    - final_stage -> GameLimitsSchema.progression.final_stage
-    - music files -> AudioResourcesSchema
-    - tilemap files -> TilemapResourcesSchema
+    Parameters
+    ----------
+    final_stage : StageSchema, optional
+        Final stage number. Game progression ends after completing this stage.
+        Used for stage progression checks and game completion logic.
+        Defaults to StageSchema(stage=5).
 
     Examples
     --------
     >>> config = StageConfigSchema()
+    >>> config.final_stage.stage
+    5
     >>> config.model_dump()
-    {}
+    {'final_stage': {'stage': 5}}
     """
+
+    final_stage: StageSchema = Field(
+        default_factory=lambda: StageSchema(stage=5),
+        description=(
+            "Final stage number. "
+            "Game progression ends after completing this stage. "
+            "Used for stage progression checks and game completion logic."
+        ),
+    )
 
     class Config:
         """Pydantic configuration."""
