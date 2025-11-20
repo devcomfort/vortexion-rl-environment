@@ -8,8 +8,6 @@ from typing import Dict
 
 from pydantic import BaseModel, Field
 
-from ...state.stage import StageSchema
-
 
 class MapResourcesSchema(BaseModel):
     """
@@ -27,10 +25,10 @@ class MapResourcesSchema(BaseModel):
     stage_files : Dict[int, str], optional
         Dictionary mapping stage numbers to map file paths.
         Defaults to stage 1-5 mappings.
-    final_stage : StageSchema, optional
-        Final stage number. Game progression ends after completing this stage.
+    final_stage : int, optional
+        Final stage number (1-5). Game progression ends after completing this stage.
         Used for stage progression checks and game completion logic.
-        Defaults to StageSchema(stage=5).
+        Defaults to 5.
 
     Examples
     --------
@@ -39,7 +37,7 @@ class MapResourcesSchema(BaseModel):
     'title.tmx'
     >>> maps.stage_files[1]
     'stage_1.tmx'
-    >>> maps.final_stage.stage
+    >>> maps.final_stage
     5
     >>> maps.model_dump()
     {'title': 'title.tmx', 'complete': 'complete.tmx', 'stage_files': {...}, 'final_stage': {...}}
@@ -63,10 +61,12 @@ class MapResourcesSchema(BaseModel):
         },
         description="Dictionary mapping stage numbers to map file paths",
     )
-    final_stage: StageSchema = Field(
-        default_factory=lambda: StageSchema(stage=5),
+    final_stage: int = Field(
+        default=5,
+        ge=1,
+        le=5,
         description=(
-            "Final stage number. "
+            "Final stage number (1-5). "
             "Game progression ends after completing this stage. "
             "Used for stage progression checks and game completion logic."
         ),
