@@ -16,19 +16,19 @@ class EntityTypeSchema(BaseModel):
 
     Parameters
     ----------
-    value : int
+    type : int
         The integer value representing the entity type (0-5).
 
     Examples
     --------
-    >>> schema = EntityTypeSchema(value=0)
-    >>> schema.value
+    >>> schema = EntityTypeSchema(type=0)
+    >>> schema.type
     0
     >>> schema.model_dump()
-    {'value': 0}
+    {'type': 0}
     """
 
-    value: int = Field(ge=0, le=5, description="Entity type value (0-5)")
+    type: int = Field(ge=0, le=5, description="Entity type value (0-5)")
 
     class Config:
         """Pydantic configuration."""
