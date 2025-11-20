@@ -11,7 +11,6 @@ from .resources import (
     TilemapResourcesSchema,
 )
 from .resources_config import ResourcesConfigSchema
-from .stage_config import StageConfigSchema
 
 __all__ = [
     "AppConfigSchema",
@@ -23,5 +22,4 @@ __all__ = [
     "AudioResourcesSchema",
     "TilemapResourcesSchema",
     "ResourcesConfigSchema",
-    "StageConfigSchema",
 ]

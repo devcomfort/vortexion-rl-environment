@@ -1,18 +1,22 @@
 """Tilemap resource file paths schema.
 
-This module provides a Pydantic schema for tilemap resource file paths.
+This module provides a Pydantic schema for tilemap resource file paths
+and stage progression configuration.
 """
 
 from typing import Dict
 
 from pydantic import BaseModel, Field
 
+from ...state.stage import StageSchema
+
 
 class TilemapResourcesSchema(BaseModel):
     """
     Tilemap resource file paths schema.
 
-    This schema represents all tilemap resource file paths used in the game.
+    This schema represents all tilemap resource file paths used in the game
+    and stage progression configuration.
 
     Parameters
     ----------
@@ -23,6 +27,10 @@ class TilemapResourcesSchema(BaseModel):
     stage_files : Dict[int, str], optional
         Dictionary mapping stage numbers to tilemap file paths.
         Defaults to stage 1-5 mappings.
+    final_stage : StageSchema, optional
+        Final stage number. Game progression ends after completing this stage.
+        Used for stage progression checks and game completion logic.
+        Defaults to StageSchema(stage=5).
 
     Examples
     --------
@@ -31,8 +39,10 @@ class TilemapResourcesSchema(BaseModel):
     'title.tmx'
     >>> tilemaps.stage_files[1]
     'stage_1.tmx'
+    >>> tilemaps.final_stage.stage
+    5
     >>> tilemaps.model_dump()
-    {'title': 'title.tmx', 'complete': 'complete.tmx', 'stage_files': {...}}
+    {'title': 'title.tmx', 'complete': 'complete.tmx', 'stage_files': {...}, 'final_stage': {...}}
     """
 
     title: str = Field(
@@ -52,6 +62,14 @@ class TilemapResourcesSchema(BaseModel):
             5: "stage_5.tmx",
         },
         description="Dictionary mapping stage numbers to tilemap file paths",
+    )
+    final_stage: StageSchema = Field(
+        default_factory=lambda: StageSchema(stage=5),
+        description=(
+            "Final stage number. "
+            "Game progression ends after completing this stage. "
+            "Used for stage progression checks and game completion logic."
+        ),
     )
 
     class Config:
