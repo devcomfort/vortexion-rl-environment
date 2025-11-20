@@ -60,7 +60,11 @@ class GraphicsConfigSchema(BaseModel):
             0xCCCCCC,
             0xFFFFFF,
         ],
-        description="Color palette as list of RGB hex values",
+        description=(
+            "Color palette as list of RGB hex values. "
+            "This is graphics content data that defines the visual style. "
+            "Each value should be a valid 24-bit RGB color (0x000000-0xFFFFFF)."
+        ),
     )
 
     @field_validator("palette")
